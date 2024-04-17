@@ -8,7 +8,7 @@ public class InternetcafeApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(InternetcafeApplication.class, args);
-		System.out.println("OK test");
+		System.out.println("OK test2");
 	}
 
 }
