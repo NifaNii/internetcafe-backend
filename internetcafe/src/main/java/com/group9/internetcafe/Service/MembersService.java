@@ -25,14 +25,18 @@ public class MembersService {
     }
 
     public MembersEntity getMemberByID(int id) {
-        Optional<MembersEntity> optionalMember = memberRepository.findById(id);
-        
-        if (optionalMember.isPresent()) {
-            return optionalMember.get(); 
-        } else {
-            
-            throw new IllegalArgumentException("Member not found for ID: " + id);
-        }
+//        Optional<MembersEntity> optionalMember = memberRepository.findById(id);
+//        
+//        if (optionalMember.isPresent()) {
+//            return optionalMember.get(); 
+//        } else {
+//            
+//            throw new IllegalArgumentException("Member not found for ID: " + id);
+//        }
+    	MembersEntity member = new MembersEntity();
+    	member = memberRepository.findById(id).get();
+    	
+    	return member;
     }
 
 

@@ -23,14 +23,14 @@ public class PCController {
     public List<PC> getAllPCs() {
         return pcService.getAllPCs();
     }
-
-    @GetMapping("/getNumberOfVacants")
-    public int getNumberOfVacantPCs() {
-        return pcService.getNumberOfVacantPCs();
+    
+    @GetMapping("/getNumberOfPCs/{status}")
+    public int getNumberOfPCsByStatus(@PathVariable String status) {
+        return pcService.getNumberOfPCsByStatus(status);
     }
 
     @PutMapping("/updatePCStatus")
-    public void updatePCStatus(@RequestParam int id, @RequestParam String status) {
-        pcService.updatePCStatus(id, status);
+    public void updatePCStatus(@RequestParam int id, @RequestBody PC newPC) {
+        pcService.updatePCStatus(id, newPC);
     }
 }

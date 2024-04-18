@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class PCService {
@@ -21,13 +22,25 @@ public class PCService {
     public List<PC> getAllPCs() {
         return pcRepository.findAll();
     }
-
-    public int getNumberOfVacantPCs() {
-        // Implement as per your requirement
-        return 0;
+    
+    public int getNumberOfPCsByStatus(String status) {
+        List<PC> pcs = pcRepository.findByStatus(status);
+        return pcs.size();
     }
-
-    public void updatePCStatus(int id, String status) {
-        // Implement as per your requirement
+    
+    @SuppressWarnings("finally")
+    public PC updatePCStatus(int id, PC newPC) {
+        PC pc = new PC();
+        
+        try {
+        	pc = pcRepository.findById(id).get();
+        	
+        	pc.setPcNumber(newPC.getPcNumber());
+        	pc.setStatus(newPC.getStatus());
+        }catch(NoSuchElementException ex) {
+        	throw new NoSuchElementException("PC Number " + id + " does not exist");
+        }finally {
+        	return pcRepository.save(pc);
+        }
     }
 }
