@@ -1,12 +1,12 @@
 package com.group9.internetcafe.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
-public class Member {
+public class MembersEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -17,10 +17,15 @@ public class Member {
     private int timeLeft;
 
 
-    public Member() {
-    }
+    
 
-    public Member(String username, String firstname, String lastname, String password, int timeLeft) {
+    public MembersEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public MembersEntity(String username, String firstname, String lastname, String password, int timeLeft) {
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
