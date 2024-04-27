@@ -68,4 +68,19 @@ public class MembersService {
     		return -1;
     	}
     }
+    
+    // check if admin
+    public int checkAdmin(String username, String password) {
+    	MembersEntity member = memberRepository.findByUsername(username);
+    	
+    	if(member != null && member.getPassword().equals(password)) {
+    		if(member.getAdmin() == 1){
+    			return member.getId();
+        	}else {
+        		return -2;
+        	}
+    	}else {
+    		return -1;
+    	}
+    }
 }

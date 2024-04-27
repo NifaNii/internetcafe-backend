@@ -3,6 +3,7 @@ package com.group9.internetcafe.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,6 +17,7 @@ import com.group9.internetcafe.Service.MembersService;
 
 @RestController
 @RequestMapping("/member")
+@CrossOrigin
 public class MembersController {
 
 	@Autowired
@@ -46,5 +48,11 @@ public class MembersController {
     @GetMapping("/checkLoginCredentials")
     public int checkLoginCredentials(@RequestParam String username, @RequestParam String password) {
     	return memberService.checkLoginCredentials(username, password);
+    }
+    
+    // check if admin
+    @GetMapping("/checkAdmin")
+    public int checkAdmin(@RequestParam String username, @RequestParam String password) {
+    	return memberService.checkAdmin(username, password);
     }
 }

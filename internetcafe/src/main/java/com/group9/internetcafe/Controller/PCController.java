@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/pc")
+@CrossOrigin
 public class PCController {
 
     private final PCService pcService;
