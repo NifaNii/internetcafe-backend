@@ -40,4 +40,11 @@ public class MembersController {
     public void updateMember(@RequestParam int id, @RequestBody MembersEntity member) {
         memberService.updateMember(id, member);
     }
+    
+    // Advanced Settings
+    
+    @GetMapping("/checkLoginCredentials")
+    public int checkLoginCredentials(@RequestParam String username, @RequestParam String password) {
+    	return memberService.checkLoginCredentials(username, password);
+    }
 }

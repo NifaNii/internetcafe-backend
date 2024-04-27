@@ -16,7 +16,8 @@ public class MembersEntity {
     private String firstname;
     private String lastname;
     private String password;
-    private int timeLeft;
+    private int balance = 0; // Defaulted to zero
+    private int admin = 0;   // Defaulted to zero
 
 
     
@@ -24,15 +25,27 @@ public class MembersEntity {
     public MembersEntity() {
 		super();
 		// TODO Auto-generated constructor stub
+        this.balance = 0;
+        this.admin = 0;
 	}
-
-
-	public MembersEntity(String username, String firstname, String lastname, String password, int timeLeft) {
+    
+    public MembersEntity(String username, String firstname, String lastname, String password) {
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
         this.password = password;
-        this.timeLeft = timeLeft;
+        // Set defaults
+        this.balance = 0;
+        this.admin = 0;
+    }
+    
+	public MembersEntity(String username, String firstname, String lastname, String password, int balance, int admin) {
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.password = password;
+        this.balance = balance;
+        this.admin = admin;
     }
 
 
@@ -76,11 +89,25 @@ public class MembersEntity {
         this.password = password;
     }
 
-    public int getTimeLeft() {
-        return timeLeft;
-    }
 
-    public void setTimeLeft(int timeLeft) {
-        this.timeLeft = timeLeft;
-    }
+	public int getBalance() {
+		return balance;
+	}
+
+
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+
+
+	public int getAdmin() {
+		return admin;
+	}
+
+
+	public void setAdmin(int admin) {
+		this.admin = admin;
+	}
+    
+    
 }

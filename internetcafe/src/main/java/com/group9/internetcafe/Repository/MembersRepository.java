@@ -7,5 +7,5 @@ import com.group9.internetcafe.Entity.MembersEntity;
 
 @Repository
 public interface MembersRepository extends JpaRepository<MembersEntity, Integer> {
-
+	MembersEntity findByUsername (String username);
 }

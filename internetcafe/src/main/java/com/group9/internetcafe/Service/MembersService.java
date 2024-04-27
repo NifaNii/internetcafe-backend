@@ -2,7 +2,7 @@ package com.group9.internetcafe.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
+// import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,11 +50,22 @@ public class MembersService {
     		member.setFirstname(newmember.getFirstname());
     		member.setLastname(newmember.getLastname());
     		member.setPassword(newmember.getPassword());
-    		member.setTimeLeft(newmember.getTimeLeft());
+    		member.setBalance(newmember.getBalance());
     	}catch (NoSuchElementException ex) {
     		throw new NoSuchElementException("Member id " + id + " does not exists.");
     	}finally {
     		return memberRepository.save(member);
+    	}
+    }
+    
+    // Advanced Settings
+    public int checkLoginCredentials(String username, String password) {
+    	MembersEntity member = memberRepository.findByUsername(username);
+    	
+    	if(member != null && member.getPassword().equals(password)) {
+    		return member.getId();
+    	}else {
+    		return -1;
     	}
     }
 }
