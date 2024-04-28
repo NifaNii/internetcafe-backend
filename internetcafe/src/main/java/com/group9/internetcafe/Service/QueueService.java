@@ -43,4 +43,19 @@ public class QueueService {
 		}
 		return "empty Queue";
 	}
+	
+	public List<QueueEntity> getAllQueue(){
+		return queueRepo.findAll();
+	}
+	
+	public String cancelQueue(int id) {
+		String msg ="";
+		if(queueRepo.findById(id) != null) {
+			queueRepo.deleteById(id);
+			msg = "deleted";
+		}else {
+			msg = "woopsies!";
+		}
+		return msg;
+	}
 }
