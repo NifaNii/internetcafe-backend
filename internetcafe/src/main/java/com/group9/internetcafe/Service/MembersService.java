@@ -83,4 +83,15 @@ public class MembersService {
     		return -1;
     	}
     }
+    
+    // check if username already exists
+    public int checkUsernameAvail(String username) {
+    	MembersEntity member = memberRepository.findByUsername(username);
+    	
+    	if(member != null) {
+    		return -1;
+    	}else {
+    		return 0;
+    	}
+    }
 }

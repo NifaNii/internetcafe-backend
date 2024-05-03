@@ -55,4 +55,10 @@ public class MembersController {
     public int checkAdmin(@RequestParam String username, @RequestParam String password) {
     	return memberService.checkAdmin(username, password);
     }
+    
+    // check if username already exists
+    @GetMapping("/checkUserAvail")
+    public int checkUserAvail(@RequestParam String username) {
+    	return memberService.checkUsernameAvail(username);
+    }
 }
