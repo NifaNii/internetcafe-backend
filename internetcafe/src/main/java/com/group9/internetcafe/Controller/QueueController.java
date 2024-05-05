@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.group9.internetcafe.Entity.QueueEntity;
@@ -45,5 +46,17 @@ public class QueueController {
 	@DeleteMapping("/cancelQueue/{id}")
 	public String cancnelQueue(@PathVariable int id) {
 		return queueServ.cancelQueue(id);
+	}
+	
+	// check if user is already in queue
+	@GetMapping("/onList")
+	public int onList(@RequestParam String firstname) {
+		return queueServ.onList(firstname);
+	}
+	
+	// prints out the called number
+	@GetMapping("/calledNumb")
+	public QueueEntity calledNumb() {
+		return queueServ.calledNumb();
 	}
 }

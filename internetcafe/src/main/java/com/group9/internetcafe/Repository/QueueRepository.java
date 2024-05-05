@@ -7,5 +7,5 @@ import com.group9.internetcafe.Entity.QueueEntity;
 
 @Repository
 public interface QueueRepository extends JpaRepository<QueueEntity, Integer>{
-
+	QueueEntity findByFirstname (String firstname);
 }

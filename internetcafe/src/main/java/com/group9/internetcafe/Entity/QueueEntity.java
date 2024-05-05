@@ -13,16 +13,26 @@ public class QueueEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	private String firstname;
+	private int ispopped;
 	
 	public QueueEntity() {
 		super();
 		// TODO Auto-generated constructor stub
+		this.ispopped = 0;
 	}
 
 	public QueueEntity(int id, String firstname) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
+		this.ispopped = 0;
+	}
+	
+	public QueueEntity(int id, String firstname, int isPopped) {
+		super();
+		this.id = id;
+		this.firstname = firstname;
+		this.ispopped = isPopped;
 	}
 
 	public int getId() {
@@ -40,6 +50,15 @@ public class QueueEntity {
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
+
+	public int getIsPopped() {
+		return ispopped;
+	}
+
+	public void setIsPopped(int isPopped) {
+		this.ispopped = isPopped;
+	}
+	
 	
 	
 }
