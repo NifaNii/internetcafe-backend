@@ -1,10 +1,17 @@
 package com.group9.internetcafe.Entity;
 
+import java.time.LocalDate;
+import java.util.Date;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="tblmembers")
@@ -18,9 +25,10 @@ public class MembersEntity {
     private String password;
     private int balance = 0; // Defaulted to zero
     private int admin = 0;   // Defaulted to zero
-
-
     
+    @Temporal(TemporalType.DATE)
+    @CreationTimestamp
+    private LocalDate created;
 
     public MembersEntity() {
 		super();
@@ -108,6 +116,15 @@ public class MembersEntity {
 	public void setAdmin(int admin) {
 		this.admin = admin;
 	}
+
+	public LocalDate getCreated() {
+		return created;
+	}
+
+	public void setCreated(LocalDate created) {
+		this.created = created;
+	}
     
+	
     
 }
