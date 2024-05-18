@@ -15,16 +15,20 @@ public class PC {
     private int id;
     private int pcNumber;
     private String status;
+    private String loggeduser;
+    
 	public PC() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PC(int id, int pcNumber, String status) {
+	public PC(int id, int pcNumber, String status, String loggeduser) {
 		super();
 		this.id = id;
 		this.pcNumber = pcNumber;
 		this.status = status;
+		this.loggeduser = loggeduser;
 	}
+	
 	public int getId() {
 		return id;
 	}
@@ -43,5 +47,10 @@ public class PC {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-    
+	public String getLoggeduser() {
+		return loggeduser;
+	}
+	public void setLoggeduser(String loggeduser) {
+		this.loggeduser = loggeduser;
+	}
 }

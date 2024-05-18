@@ -34,4 +34,9 @@ public class PCController {
     public void updatePCStatus(@RequestParam int id, @RequestBody PC newPC) {
         pcService.updatePCStatus(id, newPC);
     }
+    
+    @PutMapping("/loggedInUser")
+    public void loggedInUser(@RequestParam int id, @RequestBody PC newPC) {
+        pcService.loggedInUser(id, newPC);
+    }
 }

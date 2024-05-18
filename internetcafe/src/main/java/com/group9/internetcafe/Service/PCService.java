@@ -43,4 +43,22 @@ public class PCService {
         	return pcRepository.save(pc);
         }
     }
+    
+    // add user logged
+    @SuppressWarnings("finally")
+    public PC loggedInUser(int id, PC newPC) {
+        PC pc = new PC();
+        
+        try {
+        	pc = pcRepository.findById(id).get();
+        	
+        	pc.setPcNumber(newPC.getPcNumber());
+        	pc.setStatus(newPC.getStatus());
+        	pc.setLoggeduser(newPC.getLoggeduser());
+        }catch(NoSuchElementException ex) {
+        	throw new NoSuchElementException("PC Number " + id + " does not exist");
+        }finally {
+        	return pcRepository.save(pc);
+        }
+    }
 }
