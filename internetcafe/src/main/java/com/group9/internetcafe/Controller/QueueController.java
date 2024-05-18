@@ -59,4 +59,9 @@ public class QueueController {
 	public QueueEntity calledNumb() {
 		return queueServ.calledNumb();
 	}
+	
+	@GetMapping("/isLogged/{id}")
+	public String isLogged(@PathVariable int id) {
+		return queueServ.isLogged(id);
+	}
 }

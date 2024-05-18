@@ -14,11 +14,13 @@ public class QueueEntity {
     private int id;
 	private String firstname;
 	private int ispopped;
+	private int islogged;
 	
 	public QueueEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 		this.ispopped = 0;
+		this.islogged = 0;
 	}
 
 	public QueueEntity(int id, String firstname) {
@@ -26,13 +28,15 @@ public class QueueEntity {
 		this.id = id;
 		this.firstname = firstname;
 		this.ispopped = 0;
+		this.islogged = 0;
 	}
 	
-	public QueueEntity(int id, String firstname, int isPopped) {
+	public QueueEntity(int id, String firstname, int isPopped, int islogged) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
 		this.ispopped = isPopped;
+		this.islogged = islogged;
 	}
 
 	public int getId() {
@@ -57,6 +61,14 @@ public class QueueEntity {
 
 	public void setIsPopped(int isPopped) {
 		this.ispopped = isPopped;
+	}
+
+	public int getIslogged() {
+		return islogged;
+	}
+
+	public void setIslogged(int islogged) {
+		this.islogged = islogged;
 	}
 	
 	

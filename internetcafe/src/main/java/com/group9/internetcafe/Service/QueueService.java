@@ -84,7 +84,7 @@ public class QueueService {
 		List<QueueEntity> allQueue = queueRepo.findAll();
 		
 		for(QueueEntity queue : allQueue) {
-			if(queue.getIsPopped() == 0 && queue.getFirstname().equals(firstname)) {
+			if(queue.getIslogged() == 0 && queue.getFirstname().equals(firstname)) {
 				return queue.getId();
 			}
 		}
@@ -97,10 +97,30 @@ public class QueueService {
 		
 		for(int i = allQueue.size() - 1; i >= 0; i--) {
 			QueueEntity queue = allQueue.get(i);
-			if(queue.getIsPopped() == 1) {
+			if((queue.getIsPopped() == 1) && (queue.getIslogged() == 0)) {
 				return queue;
 			}
 		}
 		return null;
+	}
+	
+	@SuppressWarnings("finally")
+	public String isLogged(int id) {
+		QueueEntity queue = new QueueEntity();
+		
+		try {
+			queue = queueRepo.findById(id).get();
+			
+			if(queue.getIslogged() == 1) {
+				return "This Queue is already logged in";
+			}else {
+				queue.setIslogged(1);
+				queueRepo.save(queue);
+			}
+		}catch(NoSuchElementException ex) {
+			throw new NoSuchElementException(id + "does not exists");
+		}finally {
+			return "User successfully logged";
+		}
 	}
 }
