@@ -23,6 +23,7 @@ public class MembersEntity {
     private String firstname;
     private String lastname;
     private String password;
+    private String email;
     private int balance = 0; // Defaulted to zero
     private int admin = 0;   // Defaulted to zero
     
@@ -37,21 +38,23 @@ public class MembersEntity {
         this.admin = 0;
 	}
     
-    public MembersEntity(String username, String firstname, String lastname, String password) {
+    public MembersEntity(String username, String firstname, String lastname, String password, String email) {
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
         this.password = password;
+        this.email =  email;
         // Set defaults
         this.balance = 0;
         this.admin = 0;
     }
     
-	public MembersEntity(String username, String firstname, String lastname, String password, int balance, int admin) {
+	public MembersEntity(String username, String firstname, String lastname, String password, String email, int balance, int admin) {
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
         this.password = password;
+        this.email = email;
         this.balance = balance;
         this.admin = admin;
     }
@@ -123,6 +126,14 @@ public class MembersEntity {
 
 	public void setCreated(LocalDate created) {
 		this.created = created;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
     
 	

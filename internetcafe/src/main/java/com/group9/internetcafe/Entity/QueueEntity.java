@@ -15,6 +15,7 @@ public class QueueEntity {
 	private String firstname;
 	private int ispopped;
 	private int islogged;
+	private String email;
 	
 	public QueueEntity() {
 		super();
@@ -23,18 +24,20 @@ public class QueueEntity {
 		this.islogged = 0;
 	}
 
-	public QueueEntity(int id, String firstname) {
+	public QueueEntity(int id, String firstname, String email) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
+		this.email = email;
 		this.ispopped = 0;
 		this.islogged = 0;
 	}
 	
-	public QueueEntity(int id, String firstname, int isPopped, int islogged) {
+	public QueueEntity(int id, String firstname, int isPopped, int islogged, String email) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
+		this.email = email;
 		this.ispopped = isPopped;
 		this.islogged = islogged;
 	}
@@ -69,6 +72,14 @@ public class QueueEntity {
 
 	public void setIslogged(int islogged) {
 		this.islogged = islogged;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	
