@@ -26,6 +26,17 @@ public class QueueService {
 		for(QueueEntity queue : allQueue) {
 			if(queue.getIsPopped() != 1) {
 				try {
+					
+					List<QueueEntity> allQueue2 = queueRepo.findAll();
+					
+					for(int i = allQueue2.size() - 1; i >= 0; i--) {
+						QueueEntity queue2 = allQueue2.get(i);
+						if(queue2.getIsPopped() == 1 && queue2.getIslogged() == 0) {
+							queue2.setIslogged(1);
+							queueRepo.save(queue2);
+						}
+					}
+					
 					queue.setIsPopped(1);
 				}catch (NoSuchElementException ex) {
 					throw new NoSuchElementException("lols");
@@ -97,7 +108,7 @@ public class QueueService {
 		
 		for(int i = allQueue.size() - 1; i >= 0; i--) {
 			QueueEntity queue = allQueue.get(i);
-			if((queue.getIsPopped() == 1) && (queue.getIslogged() == 0)) {
+			if(queue.getIsPopped() == 1 && queue.getIslogged() == 0) {
 				return queue;
 			}
 		}
